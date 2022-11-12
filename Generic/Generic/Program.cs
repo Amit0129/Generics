@@ -1,25 +1,36 @@
-﻿namespace Generic
+﻿using System.Drawing;
+
+namespace Generic
 {
-    internal class Program
+
+    public class InputArray<T>
     {
-        public static void ToPrint<T>(T [] arr)
+        private T[] inputArr;
+        public InputArray(T[] inputArr)
         {
-            foreach (T element in arr)
+            this.inputArr = inputArr;
+        }
+        public void ToPrint()
+        {
+            foreach (var element in inputArr)
             {
                 Console.WriteLine(element);
             }
-            Console.WriteLine("============================");
-
+            Console.WriteLine("===================");
         }
+    }
+    internal class Program
+    {
         static void Main(string[] args)
         {
             int[] intArray = { 1, 2, 3, 4 };
             double[] dobArray = { 1.1, 2.2, 3.3, 4.4 };
             string[] strArray = { "am", "it", "ku", "ma" };
-            Program.ToPrint<int>(intArray);
-            Program.ToPrint<double>(dobArray);
-            Program.ToPrint<string>(strArray);
-        }
+
+            new InputArray<int>(intArray).ToPrint();
+            new InputArray<double>(dobArray).ToPrint();
+            new InputArray<string>(strArray).ToPrint();
+         }
 
     }
 }
